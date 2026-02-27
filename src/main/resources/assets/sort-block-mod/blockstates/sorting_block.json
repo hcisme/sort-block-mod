@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "sort-block-mod:block/sorting_block"
+    }
+  }
+}

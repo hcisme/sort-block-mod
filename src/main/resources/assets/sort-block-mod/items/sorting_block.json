@@ -1,0 +1,6 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "sort-block-mod:block/sorting_block"
+  }
+}
