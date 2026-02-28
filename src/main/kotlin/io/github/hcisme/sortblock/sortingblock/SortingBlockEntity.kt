@@ -1,5 +1,6 @@
 package io.github.hcisme.sortblock.sortingblock
 
+import io.github.hcisme.sortblock.utils.ItemCategoryRegistry
 import net.fabricmc.fabric.api.transfer.v1.item.ItemStorage
 import net.fabricmc.fabric.api.transfer.v1.item.ItemVariant
 import net.fabricmc.fabric.api.transfer.v1.storage.Storage
@@ -77,10 +78,16 @@ class SortingBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(TYPE, p
 
         // 遍历缓存的箱子列表 (已经按优先级 1->2->3 排序过)
         for (target in cachedInventories) {
-            // 优先级 1 (指定物品): 如果物品类型不匹配，直接跳过
-            if (target.priority == 1 && target.filterItem != stack.item) {
-                continue
+            // 优先级1
+            if (target.priority == 1) {
+                // 获取展示框里的物品
+                val filter = target.filterItem
+
+                if (filter != null && !ItemCategoryRegistry.isMatch(filter, stack)) {
+                    continue
+                }
             }
+
             // 优先级2空框 和 3杂物 无条件尝试存入
             val targetStorage = ItemStorage.SIDED.find(world, target.pos, Direction.UP) ?: continue
 
