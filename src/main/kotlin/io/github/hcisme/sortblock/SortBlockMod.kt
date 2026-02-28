@@ -5,9 +5,8 @@ import net.fabricmc.api.ModInitializer
 import org.slf4j.LoggerFactory
 
 object SortBlockMod : ModInitializer {
-    private val logger = LoggerFactory.getLogger("sort-block-mod")
-
     const val MOD_ID = "sort-block-mod"
+    private val logger = LoggerFactory.getLogger(MOD_ID)
 
     override fun onInitialize() {
         SortBlockItem.init()

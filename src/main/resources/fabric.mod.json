@@ -3,13 +3,13 @@
 	"id": "sort-block-mod",
 	"version": "${version}",
 	"name": "Sort Block Mod",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "According to the content on the display board of the box, automatically sort the items.",
 	"authors": [
-		"Me!"
+		"hcisme"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://github.com/hcisme/sort-block-mod",
+		"sources": "https://github.com/hcisme/sort-block-mod"
 	},
 	"license": "CC0-1.0",
 	"icon": "assets/sort-block-mod/icon.png",

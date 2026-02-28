@@ -14,8 +14,10 @@ import net.minecraft.registry.RegistryKeys
 import net.minecraft.util.Identifier
 
 object SortBlockItem {
+    private const val SORTING_BLOCK_NAME = "sorting_block"
+
     // 必须在创建对象之前就确定好 ID
-    private val BLOCK_ID = Identifier.of(MOD_ID, "sorting_block")
+    private val BLOCK_ID = Identifier.of(MOD_ID, SORTING_BLOCK_NAME)
 
     // 创建方块的 Key
     private val BLOCK_KEY = RegistryKey.of(RegistryKeys.BLOCK, BLOCK_ID)
@@ -43,7 +45,7 @@ object SortBlockItem {
         Registry.register(Registries.ITEM, ITEM_KEY, blockItem)
 
         // 注册 BlockEntity
-        SortingBlockEntity.Companion.TYPE = Registry.register(
+        SortingBlockEntity.TYPE = Registry.register(
             Registries.BLOCK_ENTITY_TYPE,
             BLOCK_ID,
             FabricBlockEntityTypeBuilder.create(::SortingBlockEntity, SORTING_BLOCK).build()
