@@ -182,7 +182,7 @@ object ItemCategoryRegistry {
 
     // 为其他分类创建的辅助集合
     private val MINERAL_MISC = setOf(
-        Items.FLINT, Items.INK_SAC, Items.GLOW_INK_SAC, Items.AMETHYST_SHARD,
+        Items.FLINT, Items.AMETHYST_SHARD,
         Items.QUARTZ, Items.NETHER_QUARTZ_ORE
     )
     private val TOOL_MISC = setOf(
@@ -198,7 +198,7 @@ object ItemCategoryRegistry {
         Items.HONEYCOMB, Items.HONEYCOMB_BLOCK, Items.BEEHIVE, Items.BEE_NEST
     )
     private val FOOD_MISC = setOf(Items.EGG, Items.SUGAR, Items.CAKE)
-    private val MOB_DROPS_MISC = setOf(Items.RABBIT_HIDE, Items.SNOWBALL)
+    private val MOB_DROPS_MISC = setOf(Items.RABBIT_HIDE)
     private val MAGIC_MISC = setOf(
         Items.ENCHANTED_BOOK, Items.EXPERIENCE_BOTTLE, Items.LAPIS_LAZULI,
         Items.BREWING_STAND, Items.CAULDRON, Items.CRYING_OBSIDIAN, Items.ENDER_EYE,
