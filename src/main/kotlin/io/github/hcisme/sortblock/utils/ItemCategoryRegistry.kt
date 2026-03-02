@@ -385,7 +385,7 @@ object ItemCategoryRegistry {
 
         val category = Category.fromItem(filterItem) ?: return false
 
-        // 检查排除集（原苹果的黑名单逻辑）
+        // 检查排除集（例如苹果分类的黑名单逻辑）
         if (category.excludedItems.contains(item)) return false
 
         // 检查标签

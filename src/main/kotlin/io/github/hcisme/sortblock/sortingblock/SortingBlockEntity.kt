@@ -26,7 +26,7 @@ import kotlin.math.sqrt
 class SortingBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(TYPE, pos, state) {
     companion object {
         lateinit var TYPE: BlockEntityType<SortingBlockEntity>
-        private const val RANGE_X = 40
+        private const val RANGE_X = 30
         private const val RANGE_Y = 5
         private const val RANGE_Z = 8
         private const val SUNDRIES = "sundries"
