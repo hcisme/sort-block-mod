@@ -1,6 +1,6 @@
 package io.github.hcisme.sortblock
 
-import io.github.hcisme.sortblock.sortingblock.SortBlockItem
+import io.github.hcisme.sortblock.sortingblock.SortingBlockRegistry
 import net.fabricmc.api.ModInitializer
 import org.slf4j.LoggerFactory
 
@@ -9,6 +9,6 @@ object SortBlockMod : ModInitializer {
     private val logger = LoggerFactory.getLogger(MOD_ID)
 
     override fun onInitialize() {
-        SortBlockItem.init()
+        SortingBlockRegistry.init()
     }
 }
