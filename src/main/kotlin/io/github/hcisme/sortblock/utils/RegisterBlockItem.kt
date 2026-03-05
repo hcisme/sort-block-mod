@@ -30,8 +30,10 @@ fun <T : Block> registerBlockItem(
             block,
             Item.Settings().registryKey(itemKey).useBlockPrefixedTranslationKey()
         )
+        // 将方块的“物品形态（可以拿在手上、放在背包里）”注册到游戏的物品注册表 (Registries.ITEM)中
         Registry.register(Registries.ITEM, itemKey, blockItem)
     }
 
+    // 将方块的“物理形态（可以放置在游戏世界中、有碰撞体积）”注册到游戏的方块注册表 (Registries.BLOCK)中
     return Registry.register(Registries.BLOCK, blockKey, block)
 }

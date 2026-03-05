@@ -11,7 +11,7 @@ import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 
 /**
- * SortingBlock (排序方块)
+ * SortingBlock
  * 作用：这是放置在世界中的物理方块。
  * 继承 BlockWithEntity 是因为我们需要它携带数据和逻辑 (BlockEntity)。
  */

@@ -21,6 +21,7 @@ object SortingBlockRegistry {
 
     fun init() {
         val blockId = Identifier.of(MOD_ID, SORTING_BLOCK_NAME)
+        // 将方块的逻辑 注册到游戏的方块实体类型注册表 (Registries.BLOCK_ENTITY_TYPE) 中
         SortingBlockEntity.TYPE = Registry.register(
             Registries.BLOCK_ENTITY_TYPE,
             blockId,
