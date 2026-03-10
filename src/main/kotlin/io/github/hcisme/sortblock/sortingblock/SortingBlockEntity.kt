@@ -307,7 +307,7 @@ class SortingBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(TYPE, p
     private fun spawnParticles(world: World, pos: BlockPos) {
         if (world is ServerWorld) {
             world.spawnParticles(
-                ParticleTypes.POOF,
+                ParticleTypes.GLOW,
                 pos.x + 0.5,
                 pos.up().y + 0.2,
                 pos.z + 0.5,

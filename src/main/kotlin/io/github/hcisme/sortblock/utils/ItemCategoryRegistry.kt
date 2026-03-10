@@ -26,18 +26,38 @@ object ItemCategoryRegistry {
 
     // 农业硬编码
     private val FARMING_HARD_CODE = setOf(
-        Items.BONE_MEAL, Items.LILY_PAD, Items.MOSS_BLOCK, Items.MOSS_CARPET,
-        Items.HONEYCOMB, Items.HONEYCOMB_BLOCK, Items.BEEHIVE, Items.BEE_NEST, Items.BAMBOO
+        Items.BONE_MEAL,
+        Items.LILY_PAD,
+        Items.MOSS_BLOCK,
+        Items.MOSS_CARPET,
+        Items.HONEYCOMB,
+        Items.HONEYCOMB_BLOCK,
+        Items.BEEHIVE,
+        Items.BEE_NEST,
+        Items.BAMBOO,
+        Items.CRIMSON_FUNGUS,
+        Items.WARPED_FUNGUS,
+        Items.CRIMSON_ROOTS,
+        Items.WARPED_ROOTS
     )
 
     // 食物硬编码
-    private val FOOD_MISC = setOf(Items.EGG, Items.SUGAR, Items.CAKE)
+    private val FOOD_HARD_CODE = setOf(Items.EGG, Items.SUGAR, Items.CAKE)
 
     // 矿产资源相关硬编码
-    private val MINERAL_MISC = setOf(Items.FLINT, Items.AMETHYST_SHARD, Items.QUARTZ, Items.NETHER_QUARTZ_ORE)
+    private val MINERAL_HARD_CODE = setOf(
+        Items.FLINT,
+        Items.AMETHYST_SHARD,
+        Items.QUARTZ,
+        Items.NETHER_QUARTZ_ORE,
+        Items.ANCIENT_DEBRIS,      // 远古残骸
+        Items.NETHERITE_SCRAP,      // 下界合金碎片
+        Items.NETHERITE_INGOT,      // 下界合金锭
+        Items.NETHERITE_BLOCK       // 下界合金块
+    )
 
     // 工具相关硬编码
-    private val TOOL_MISC = setOf(
+    private val TOOL_HARD_CODE = setOf(
         Items.SHEARS, Items.FLINT_AND_STEEL, Items.FISHING_ROD, Items.NAME_TAG,
         Items.LEAD, Items.BUNDLE, Items.SHIELD, Items.BOW, Items.CROSSBOW,
         Items.TRIDENT, Items.ARROW, Items.SPECTRAL_ARROW, Items.TIPPED_ARROW,
@@ -55,7 +75,7 @@ object ItemCategoryRegistry {
     )
 
     // 建筑方块相关硬编码
-    private val STONE_VARIANTS = setOf(
+    private val STONE_VARIANTS_HARD_CODE = setOf(
         Items.STONE, // 石头
         Items.GRANITE, // 花岗岩
         Items.POLISHED_GRANITE, // 磨制花岗岩
@@ -107,11 +127,30 @@ object ItemCategoryRegistry {
         Items.END_STONE_BRICKS, // 末地石砖
         Items.BRICKS,
         Items.BRICK_STAIRS,
-        Items.BRICK_SLAB
+        Items.BRICK_SLAB,
+        Items.GLOWSTONE, // 萤石
+        // 所有陶瓦
+        Items.TERRACOTTA,
+        Items.WHITE_TERRACOTTA,
+        Items.ORANGE_TERRACOTTA,
+        Items.MAGENTA_TERRACOTTA,
+        Items.LIGHT_BLUE_TERRACOTTA,
+        Items.YELLOW_TERRACOTTA,
+        Items.LIME_TERRACOTTA,
+        Items.PINK_TERRACOTTA,
+        Items.GRAY_TERRACOTTA,
+        Items.LIGHT_GRAY_TERRACOTTA,
+        Items.CYAN_TERRACOTTA,
+        Items.PURPLE_TERRACOTTA,
+        Items.BLUE_TERRACOTTA,
+        Items.BROWN_TERRACOTTA,
+        Items.GREEN_TERRACOTTA,
+        Items.RED_TERRACOTTA,
+        Items.BLACK_TERRACOTTA
     )
 
     // 交通运输相关硬编码
-    private val TRANSPORT_MISC = setOf(
+    private val TRANSPORT_HARD_CODE = setOf(
         Items.CARROT_ON_A_STICK,
         Items.WARPED_FUNGUS_ON_A_STICK,
         Items.ELYTRA,
@@ -181,14 +220,15 @@ object ItemCategoryRegistry {
         Items.DETECTOR_RAIL, // 探测铁轨
         Items.ACTIVATOR_RAIL, // 激活铁轨
         Items.REDSTONE_ORE, // 红石矿石
-        Items.DEEPSLATE_REDSTONE_ORE // 深层红石矿石
+        Items.DEEPSLATE_REDSTONE_ORE, // 深层红石矿石
+        Items.GUNPOWDER // 火药
     )
 
     // 怪物掉落相关硬编码
-    private val MOB_DROPS_MISC = setOf(Items.RABBIT_HIDE)
+    private val MOB_DROPS_HARD_CODE = setOf(Items.RABBIT_HIDE)
 
     // 木工/杂项相关硬编码
-    private val WOOD_MISC_ITEMS = setOf(
+    private val WOOD_HARD_CODE = setOf(
         Items.CAMPFIRE, // 营火
         Items.SOUL_CAMPFIRE, // 灵魂营火
         Items.LADDER, // 梯子
@@ -240,13 +280,16 @@ object ItemCategoryRegistry {
     )
 
     // 魔法相关硬编码
-    private val MAGIC_MISC = setOf(
+    private val MAGIC_HARD_CODE = setOf(
         Items.ENCHANTED_BOOK, Items.EXPERIENCE_BOTTLE, Items.LAPIS_LAZULI,
         Items.BREWING_STAND, Items.CAULDRON, Items.CRYING_OBSIDIAN, Items.ENDER_EYE,
         Items.POTION, Items.SPLASH_POTION, Items.LINGERING_POTION
     )
 
-    // 分类枚举（数据驱动核心）
+    // 装备硬编码
+    private val ARMOR_HARD_CODE = setOf(Items.CARVED_PUMPKIN)
+
+    // 分类枚举
     private enum class Category(
         val representative: Item,
         val tags: List<TagKey<Item>> = emptyList(),
@@ -275,7 +318,7 @@ object ItemCategoryRegistry {
             // 苹果
             representative = Items.APPLE,
             tags = listOf(C_FOODS, ItemTags.FISHES),
-            hardcodedItems = FOOD_MISC,
+            hardcodedItems = FOOD_HARD_CODE,
             excludedItems = setOf(
                 Items.ROTTEN_FLESH, Items.SPIDER_EYE,
                 Items.PUFFERFISH, Items.POISONOUS_POTATO
@@ -293,7 +336,7 @@ object ItemCategoryRegistry {
                 ItemTags.DIAMOND_ORES, ItemTags.GOLD_ORES, ItemTags.IRON_ORES,
                 ItemTags.COPPER_ORES
             ),
-            hardcodedItems = MINERAL_MISC
+            hardcodedItems = MINERAL_HARD_CODE
         ),
 
         // 4. 装备与防具
@@ -306,7 +349,8 @@ object ItemCategoryRegistry {
                 ItemTags.CHEST_ARMOR,
                 ItemTags.LEG_ARMOR,
                 ItemTags.FOOT_ARMOR
-            )
+            ),
+            hardcodedItems = ARMOR_HARD_CODE
         ),
 
         // 5. 工具
@@ -317,7 +361,7 @@ object ItemCategoryRegistry {
                 ItemTags.AXES, ItemTags.HOES, ItemTags.PICKAXES,
                 ItemTags.SHOVELS, ItemTags.SWORDS, ItemTags.ARROWS
             ),
-            hardcodedItems = TOOL_MISC
+            hardcodedItems = TOOL_HARD_CODE
         ),
 
         // 6. 建筑材料
@@ -343,7 +387,7 @@ object ItemCategoryRegistry {
                 C_GLASS,
                 C_GLASS_PANES
             ),
-            hardcodedItems = STONE_VARIANTS
+            hardcodedItems = STONE_VARIANTS_HARD_CODE
         ),
 
         // 7. 交通
@@ -357,7 +401,7 @@ object ItemCategoryRegistry {
                 createTag("c", "minecarts"),
                 C_ARMORS
             ),
-            hardcodedItems = TRANSPORT_MISC
+            hardcodedItems = TRANSPORT_HARD_CODE
         ),
 
         // 8. 红石
@@ -391,7 +435,7 @@ object ItemCategoryRegistry {
                 createTag("c", "feathers"),
                 createTag("c", "leather")
             ),
-            hardcodedItems = MOB_DROPS_MISC
+            hardcodedItems = MOB_DROPS_HARD_CODE
         ),
 
         // 10. 木工/家具
@@ -399,14 +443,14 @@ object ItemCategoryRegistry {
             // 橡木原木
             representative = Items.OAK_LOG,
             tags = listOf(C_CHESTS, ItemTags.SIGNS, ItemTags.HANGING_SIGNS),
-            hardcodedItems = WOOD_MISC_ITEMS
+            hardcodedItems = WOOD_HARD_CODE
         ),
 
         // 11. 魔法
         GLASS_BOTTLE(
             // 玻璃瓶
             representative = Items.GLASS_BOTTLE,
-            hardcodedItems = MAGIC_MISC
+            hardcodedItems = MAGIC_HARD_CODE
         );
 
         companion object {
