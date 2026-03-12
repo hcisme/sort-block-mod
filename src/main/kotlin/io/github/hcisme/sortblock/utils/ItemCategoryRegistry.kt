@@ -311,6 +311,7 @@ object ItemCategoryRegistry {
                 createTag("c", "dyes")
             ),
             hardcodedItems = FARMING_HARD_CODE,
+            excludedItems = setOf(Items.CARROT)
         ),
 
         // 2. 食物
@@ -459,6 +460,11 @@ object ItemCategoryRegistry {
         }
     }
 
+    /**
+     * [filterItem] : 展示框的物品
+     *
+     * [stack] : 方块上方的掉落物
+     */
     fun isMatch(filterItem: Item, stack: ItemStack): Boolean {
         val item = stack.item
         // 如果就是代表物品本身，直接匹配
