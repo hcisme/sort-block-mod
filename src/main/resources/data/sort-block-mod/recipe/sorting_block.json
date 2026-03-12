@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "show_notification": true,
+  "pattern": [
+    "WWW",
+    "WLW",
+    "WWW"
+  ],
+  "key": {
+    "W": "minecraft:dirt",
+    "L": "#minecraft:logs"
+  },
+  "result": {
+    "id": "sort-block-mod:sorting_block",
+    "count": 1
+  }
+}
