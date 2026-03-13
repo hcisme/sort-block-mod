@@ -402,7 +402,15 @@ object ItemCategoryRegistry {
                 createTag("c", "minecarts"),
                 C_ARMORS
             ),
-            hardcodedItems = TRANSPORT_HARD_CODE
+            hardcodedItems = TRANSPORT_HARD_CODE,
+            excludedItems = setOf(
+                Items.LEATHER_BOOTS,
+                Items.IRON_BOOTS,
+                Items.CHAINMAIL_BOOTS,
+                Items.GOLDEN_BOOTS,
+                Items.DIAMOND_BOOTS,
+                Items.NETHERITE_BOOTS
+            )
         ),
 
         // 8. 红石
