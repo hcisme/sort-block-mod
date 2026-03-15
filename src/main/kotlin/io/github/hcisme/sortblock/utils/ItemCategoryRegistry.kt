@@ -291,7 +291,65 @@ object ItemCategoryRegistry {
         Items.POLISHED_BLACKSTONE_BRICK_WALL,
         // 其他杂项建筑方块
         Items.BONE_BLOCK,
-        Items.COAL_BLOCK
+        Items.COAL_BLOCK,
+        // 基础石头及其变种的楼梯、台阶、墙
+        Items.STONE_STAIRS,
+        Items.STONE_SLAB,
+        Items.GRANITE_STAIRS,
+        Items.GRANITE_SLAB,
+        Items.GRANITE_WALL,
+        Items.DIORITE_STAIRS,
+        Items.DIORITE_SLAB,
+        Items.DIORITE_WALL,
+        Items.ANDESITE_STAIRS,
+        Items.ANDESITE_SLAB,
+        Items.ANDESITE_WALL,
+        // 砂岩及其变种（块、楼梯、台阶、墙）
+        Items.SANDSTONE,
+        Items.SANDSTONE_STAIRS,
+        Items.SANDSTONE_SLAB,
+        Items.SANDSTONE_WALL,
+        Items.RED_SANDSTONE,
+        Items.RED_SANDSTONE_STAIRS,
+        Items.RED_SANDSTONE_SLAB,
+        Items.RED_SANDSTONE_WALL,
+        Items.SMOOTH_SANDSTONE,
+        Items.SMOOTH_SANDSTONE_STAIRS,
+        Items.SMOOTH_SANDSTONE_SLAB,
+        Items.SMOOTH_RED_SANDSTONE,
+        Items.SMOOTH_RED_SANDSTONE_STAIRS,
+        Items.SMOOTH_RED_SANDSTONE_SLAB,
+        Items.CUT_SANDSTONE,
+        Items.CUT_SANDSTONE_SLAB,
+        Items.CUT_RED_SANDSTONE,
+        Items.CUT_RED_SANDSTONE_SLAB,
+        Items.CHISELED_SANDSTONE,
+        Items.CHISELED_RED_SANDSTONE,
+        // 石砖及其变种（楼梯、台阶、墙）
+        Items.STONE_BRICK_STAIRS,
+        Items.STONE_BRICK_SLAB,
+        Items.STONE_BRICK_WALL,
+        Items.MOSSY_STONE_BRICK_STAIRS,
+        Items.MOSSY_STONE_BRICK_SLAB,
+        Items.MOSSY_STONE_BRICK_WALL,
+        // 圆石与苔石（楼梯、台阶、墙）
+        Items.COBBLESTONE_STAIRS,
+        Items.COBBLESTONE_SLAB,
+        Items.COBBLESTONE_WALL,
+        Items.MOSSY_COBBLESTONE_STAIRS,
+        Items.MOSSY_COBBLESTONE_SLAB,
+        Items.MOSSY_COBBLESTONE_WALL,
+        // 末地石砖楼梯、台阶
+        Items.END_STONE_BRICK_STAIRS,
+        Items.END_STONE_BRICK_SLAB,
+        // 海晶石墙
+        Items.PRISMARINE_WALL,
+        // 砖块墙
+        Items.BRICK_WALL,
+        // 铁栏杆
+        Items.IRON_BARS,
+        // 石英雕纹块
+        Items.CHISELED_QUARTZ_BLOCK
     )
 
     // 交通运输相关硬编码
