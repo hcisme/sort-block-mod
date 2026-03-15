@@ -23,6 +23,7 @@ object ItemCategoryRegistry {
     private val C_GLASS_PANES = createTag("c", "glass_panes")
     private val C_CHESTS = createTag("c", "chests") // 矛类武器
     private val C_ARMORS = createTag("c", "armors")  // 所有盔甲
+    private val C_SPEARS = createTag("c", "spears")  // 矛类武器（新增）
 
     // 农业硬编码
     private val FARMING_HARD_CODE = setOf(
@@ -38,7 +39,16 @@ object ItemCategoryRegistry {
         Items.CRIMSON_FUNGUS,
         Items.WARPED_FUNGUS,
         Items.CRIMSON_ROOTS,
-        Items.WARPED_ROOTS
+        Items.WARPED_ROOTS,
+        Items.AZALEA,                     // 杜鹃花丛
+        Items.FLOWERING_AZALEA,           // 盛开的杜鹃花丛
+        Items.ROOTED_DIRT,                 // 缠根泥土
+        Items.SPORE_BLOSSOM,                // 孢子花
+        Items.SMALL_DRIPLEAF,               // 小型垂滴叶
+        Items.BIG_DRIPLEAF,                  // 大型垂滴叶
+        Items.KELP,                          // 海带
+        Items.SEAGRASS,                      // 海草
+        Items.SWEET_BERRIES                   // 甜浆果
     )
 
     // 食物硬编码
@@ -53,7 +63,11 @@ object ItemCategoryRegistry {
         Items.ANCIENT_DEBRIS,      // 远古残骸
         Items.NETHERITE_SCRAP,      // 下界合金碎片
         Items.NETHERITE_INGOT,      // 下界合金锭
-        Items.NETHERITE_BLOCK       // 下界合金块
+        Items.NETHERITE_BLOCK,     // 下界合金块
+        // 粗矿块
+        Items.RAW_IRON_BLOCK,
+        Items.RAW_GOLD_BLOCK,
+        Items.RAW_COPPER_BLOCK
     )
 
     // 工具相关硬编码
@@ -71,7 +85,10 @@ object ItemCategoryRegistry {
         Items.GOLDEN_SPEAR,
         Items.DIAMOND_SPEAR,
         Items.NETHERITE_SPEAR,
-        Items.WOODEN_SPEAR
+        Items.WOODEN_SPEAR,
+        Items.BRUSH,                         // 刷子
+        Items.FIRE_CHARGE,                    // 火焰弹（也可归红石）
+        Items.DEBUG_STICK                      // 调试棒（可选）
     )
 
     // 建筑方块相关硬编码
@@ -146,7 +163,135 @@ object ItemCategoryRegistry {
         Items.BROWN_TERRACOTTA,
         Items.GREEN_TERRACOTTA,
         Items.RED_TERRACOTTA,
-        Items.BLACK_TERRACOTTA
+        Items.BLACK_TERRACOTTA,
+        // 所有带釉陶瓦（新增）
+        Items.WHITE_GLAZED_TERRACOTTA,
+        Items.ORANGE_GLAZED_TERRACOTTA,
+        Items.MAGENTA_GLAZED_TERRACOTTA,
+        Items.LIGHT_BLUE_GLAZED_TERRACOTTA,
+        Items.YELLOW_GLAZED_TERRACOTTA,
+        Items.LIME_GLAZED_TERRACOTTA,
+        Items.PINK_GLAZED_TERRACOTTA,
+        Items.GRAY_GLAZED_TERRACOTTA,
+        Items.LIGHT_GRAY_GLAZED_TERRACOTTA,
+        Items.CYAN_GLAZED_TERRACOTTA,
+        Items.PURPLE_GLAZED_TERRACOTTA,
+        Items.BLUE_GLAZED_TERRACOTTA,
+        Items.BROWN_GLAZED_TERRACOTTA,
+        Items.GREEN_GLAZED_TERRACOTTA,
+        Items.RED_GLAZED_TERRACOTTA,
+        Items.BLACK_GLAZED_TERRACOTTA,
+        // 所有混凝土块（16色）
+        Items.WHITE_CONCRETE,
+        Items.ORANGE_CONCRETE,
+        Items.MAGENTA_CONCRETE,
+        Items.LIGHT_BLUE_CONCRETE,
+        Items.YELLOW_CONCRETE,
+        Items.LIME_CONCRETE,
+        Items.PINK_CONCRETE,
+        Items.GRAY_CONCRETE,
+        Items.LIGHT_GRAY_CONCRETE,
+        Items.CYAN_CONCRETE,
+        Items.PURPLE_CONCRETE,
+        Items.BLUE_CONCRETE,
+        Items.BROWN_CONCRETE,
+        Items.GREEN_CONCRETE,
+        Items.RED_CONCRETE,
+        Items.BLACK_CONCRETE,
+        // 所有混凝土粉末（16色）
+        Items.WHITE_CONCRETE_POWDER,
+        Items.ORANGE_CONCRETE_POWDER,
+        Items.MAGENTA_CONCRETE_POWDER,
+        Items.LIGHT_BLUE_CONCRETE_POWDER,
+        Items.YELLOW_CONCRETE_POWDER,
+        Items.LIME_CONCRETE_POWDER,
+        Items.PINK_CONCRETE_POWDER,
+        Items.GRAY_CONCRETE_POWDER,
+        Items.LIGHT_GRAY_CONCRETE_POWDER,
+        Items.CYAN_CONCRETE_POWDER,
+        Items.PURPLE_CONCRETE_POWDER,
+        Items.BLUE_CONCRETE_POWDER,
+        Items.BROWN_CONCRETE_POWDER,
+        Items.GREEN_CONCRETE_POWDER,
+        Items.RED_CONCRETE_POWDER,
+        Items.BLACK_CONCRETE_POWDER,
+        // 海晶石系列（新增）
+        Items.PRISMARINE,
+        Items.PRISMARINE_BRICKS,
+        Items.DARK_PRISMARINE,
+        Items.PRISMARINE_STAIRS,
+        Items.PRISMARINE_BRICK_STAIRS,
+        Items.DARK_PRISMARINE_STAIRS,
+        Items.PRISMARINE_SLAB,
+        Items.PRISMARINE_BRICK_SLAB,
+        Items.DARK_PRISMARINE_SLAB,
+        // 紫珀块系列（新增）
+        Items.PURPUR_BLOCK,
+        Items.PURPUR_PILLAR,
+        Items.PURPUR_STAIRS,
+        Items.PURPUR_SLAB,
+        // 石英系列（新增）
+        Items.QUARTZ_BLOCK,
+        Items.QUARTZ_BRICKS,
+        Items.QUARTZ_PILLAR,
+        Items.SMOOTH_QUARTZ,
+        Items.QUARTZ_STAIRS,
+        Items.SMOOTH_QUARTZ_STAIRS,
+        Items.QUARTZ_SLAB,
+        Items.SMOOTH_QUARTZ_SLAB,
+        // 铜块系列（基础变种，氧化变种通过标签覆盖）
+        Items.COPPER_BLOCK,
+        Items.CUT_COPPER,
+        Items.CUT_COPPER_STAIRS,
+        Items.CUT_COPPER_SLAB,
+        Items.CHISELED_COPPER,
+        // 凝灰岩系列（新增，1.21）
+        Items.TUFF_STAIRS,
+        Items.TUFF_SLAB,
+        Items.TUFF_WALL,
+        Items.POLISHED_TUFF,
+        Items.POLISHED_TUFF_STAIRS,
+        Items.POLISHED_TUFF_SLAB,
+        Items.POLISHED_TUFF_WALL,
+        Items.TUFF_BRICKS,
+        Items.TUFF_BRICK_STAIRS,
+        Items.TUFF_BRICK_SLAB,
+        Items.TUFF_BRICK_WALL,
+        // 下界砖系列楼梯/台阶/墙（部分可能已被标签覆盖，但硬编码确保）
+        Items.NETHER_BRICK_STAIRS,
+        Items.NETHER_BRICK_SLAB,
+        Items.NETHER_BRICK_WALL,
+        Items.RED_NETHER_BRICK_STAIRS,
+        Items.RED_NETHER_BRICK_SLAB,
+        Items.RED_NETHER_BRICK_WALL,
+        // 末地石砖墙
+        Items.END_STONE_BRICK_WALL,
+        // 深板岩系列楼梯/台阶/墙（部分可能已被标签覆盖）
+        Items.COBBLED_DEEPSLATE_STAIRS,
+        Items.COBBLED_DEEPSLATE_SLAB,
+        Items.COBBLED_DEEPSLATE_WALL,
+        Items.POLISHED_DEEPSLATE_STAIRS,
+        Items.POLISHED_DEEPSLATE_SLAB,
+        Items.POLISHED_DEEPSLATE_WALL,
+        Items.DEEPSLATE_BRICK_STAIRS,
+        Items.DEEPSLATE_BRICK_SLAB,
+        Items.DEEPSLATE_BRICK_WALL,
+        Items.DEEPSLATE_TILE_STAIRS,
+        Items.DEEPSLATE_TILE_SLAB,
+        Items.DEEPSLATE_TILE_WALL,
+        // 黑石系列楼梯/台阶/墙
+        Items.BLACKSTONE_STAIRS,
+        Items.BLACKSTONE_SLAB,
+        Items.BLACKSTONE_WALL,
+        Items.POLISHED_BLACKSTONE_STAIRS,
+        Items.POLISHED_BLACKSTONE_SLAB,
+        Items.POLISHED_BLACKSTONE_WALL,
+        Items.POLISHED_BLACKSTONE_BRICK_STAIRS,
+        Items.POLISHED_BLACKSTONE_BRICK_SLAB,
+        Items.POLISHED_BLACKSTONE_BRICK_WALL,
+        // 其他杂项建筑方块
+        Items.BONE_BLOCK,
+        Items.COAL_BLOCK
     )
 
     // 交通运输相关硬编码
@@ -162,7 +307,12 @@ object ItemCategoryRegistry {
         Items.DIAMOND_HORSE_ARMOR, // 钻石马铠
         Items.WOLF_ARMOR, // 狼铠
         Items.COPPER_HORSE_ARMOR, // 铜马铠
-        Items.NETHERITE_HORSE_ARMOR // 下界合金马铠
+        Items.NETHERITE_HORSE_ARMOR, // 下界合金马铠
+        Items.CHEST_MINECART,
+        Items.FURNACE_MINECART,
+        Items.TNT_MINECART,
+        Items.HOPPER_MINECART,
+        Items.COMMAND_BLOCK_MINECART
     )
 
     // 红石元件相关硬编码
@@ -225,7 +375,10 @@ object ItemCategoryRegistry {
     )
 
     // 怪物掉落相关硬编码
-    private val MOB_DROPS_HARD_CODE = setOf(Items.RABBIT_HIDE)
+    private val MOB_DROPS_HARD_CODE = setOf(
+        Items.RABBIT_HIDE,
+        Items.PHANTOM_MEMBRANE     // 幻翼膜
+    )
 
     // 木工/杂项相关硬编码
     private val WOOD_HARD_CODE = setOf(
@@ -276,7 +429,34 @@ object ItemCategoryRegistry {
         Items.BROWN_SHULKER_BOX,
         Items.GREEN_SHULKER_BOX,
         Items.RED_SHULKER_BOX,
-        Items.BLACK_SHULKER_BOX
+        Items.BLACK_SHULKER_BOX,
+        // 所有木质楼梯
+        Items.OAK_STAIRS,
+        Items.SPRUCE_STAIRS,
+        Items.BIRCH_STAIRS,
+        Items.JUNGLE_STAIRS,
+        Items.ACACIA_STAIRS,
+        Items.DARK_OAK_STAIRS,
+        Items.MANGROVE_STAIRS,
+        Items.CHERRY_STAIRS,
+        Items.BAMBOO_STAIRS,
+        Items.BAMBOO_MOSAIC_STAIRS,
+        Items.CRIMSON_STAIRS,
+        Items.WARPED_STAIRS,
+        // 所有木质台阶
+        Items.OAK_SLAB,
+        Items.SPRUCE_SLAB,
+        Items.BIRCH_SLAB,
+        Items.JUNGLE_SLAB,
+        Items.ACACIA_SLAB,
+        Items.DARK_OAK_SLAB,
+        Items.MANGROVE_SLAB,
+        Items.CHERRY_SLAB,
+        Items.BAMBOO_SLAB,
+        Items.BAMBOO_MOSAIC_SLAB,
+        Items.CRIMSON_SLAB,
+        Items.WARPED_SLAB,
+        Items.CHISELED_BOOKSHELF
     )
 
     // 魔法相关硬编码
@@ -287,7 +467,17 @@ object ItemCategoryRegistry {
     )
 
     // 装备硬编码
-    private val ARMOR_HARD_CODE = setOf(Items.CARVED_PUMPKIN)
+    private val ARMOR_HARD_CODE = setOf(
+        Items.CARVED_PUMPKIN,
+        // 头颅类（可佩戴）
+        Items.SKELETON_SKULL,
+        Items.WITHER_SKELETON_SKULL,
+        Items.ZOMBIE_HEAD,
+        Items.PLAYER_HEAD,
+        Items.CREEPER_HEAD,
+        Items.PIGLIN_HEAD,
+        Items.DRAGON_HEAD
+    )
 
     // 分类枚举
     private enum class Category(
@@ -360,7 +550,8 @@ object ItemCategoryRegistry {
             representative = Items.IRON_AXE,
             tags = listOf(
                 ItemTags.AXES, ItemTags.HOES, ItemTags.PICKAXES,
-                ItemTags.SHOVELS, ItemTags.SWORDS, ItemTags.ARROWS
+                ItemTags.SHOVELS, ItemTags.SWORDS, ItemTags.ARROWS,
+                C_SPEARS
             ),
             hardcodedItems = TOOL_HARD_CODE
         ),
@@ -373,13 +564,7 @@ object ItemCategoryRegistry {
                 ItemTags.STONE_BRICKS,
                 ItemTags.WOOL,
                 ItemTags.WOOL_CARPETS,
-                ItemTags.LOGS,
-                ItemTags.PLANKS,
-                ItemTags.STAIRS,
-                ItemTags.SLABS,
                 ItemTags.WALLS,
-                ItemTags.FENCES,
-                ItemTags.FENCE_GATES,
                 ItemTags.TERRACOTTA,
                 ItemTags.DIRT,
                 ItemTags.SAND,
@@ -451,7 +636,19 @@ object ItemCategoryRegistry {
         OAK_LOG(
             // 橡木原木
             representative = Items.OAK_LOG,
-            tags = listOf(C_CHESTS, ItemTags.SIGNS, ItemTags.HANGING_SIGNS),
+            tags = listOf(
+                C_CHESTS,
+                ItemTags.SIGNS,
+                ItemTags.HANGING_SIGNS,
+                ItemTags.LOGS,                       // 原木
+                ItemTags.PLANKS,                      // 木板
+                ItemTags.WOODEN_DOORS,                 // 木门
+                ItemTags.WOODEN_TRAPDOORS,              // 木活板门
+                ItemTags.WOODEN_PRESSURE_PLATES,         // 木压力板
+                ItemTags.WOODEN_BUTTONS,                 // 木按钮
+                ItemTags.WOODEN_FENCES,                  // 木栅栏
+                ItemTags.FENCE_GATES                    // 栅栏门（全为木质）
+            ),
             hardcodedItems = WOOD_HARD_CODE
         ),
 
@@ -469,9 +666,14 @@ object ItemCategoryRegistry {
     }
 
     /**
-     * [filterItem] : 展示框的物品
-     *
-     * [stack] : 方块上方的掉落物
+     * 判断物品 [stack] 是否匹配过滤物品 [filterItem] 所代表的分类。
+     * 匹配顺序：
+     * 1. 如果物品就是代表物品本身 → true
+     * 2. 如果代表物无对应分类 → false
+     * 3. 如果物品在排除集中 → false
+     * 4. 如果物品拥有分类的任意标签 → true
+     * 5. 如果物品在硬编码集合中 → true
+     * 6. 特殊处理：当过滤物品为苹果且物品可食用 → true
      */
     fun isMatch(filterItem: Item, stack: ItemStack): Boolean {
         val item = stack.item
