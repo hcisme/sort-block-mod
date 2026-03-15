@@ -538,7 +538,7 @@ object ItemCategoryRegistry {
     )
 
     // 分类枚举
-    private enum class Category(
+    enum class Category(
         val representative: Item,
         val tags: List<TagKey<Item>> = emptyList(),
         val hardcodedItems: Set<Item> = emptySet(),

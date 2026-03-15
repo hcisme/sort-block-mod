@@ -76,19 +76,36 @@ class SortingBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(TYPE, p
         val itemVariant = ItemVariant.of(stack)
         val originalCount = stack.count.toLong()
 
-        // 遍历缓存的箱子列表 (已经按优先级 1->2->3 排序过)
+        // 遍历缓存的箱子列表
         for (target in cachedInventories) {
-            // 优先级1
-            if (target.priority == 1) {
-                // 获取展示框里的物品
-                val filter = target.filterItem
-
-                if (filter != null && !ItemCategoryRegistry.isMatch(filter, stack)) {
-                    continue
+            var canInsert = false
+            when (target.priority) {
+                1 -> {
+                    val filterItem = target.filterItem!!
+                    val category = ItemCategoryRegistry.Category.fromItem(filterItem)
+                    // 只有当 category 存在且匹配当前 stack 时才允许放入
+                    if (category != null && ItemCategoryRegistry.isMatch(filterItem,stack)) {
+                        canInsert = true
+                    }
+                }
+                2 -> {
+                    // 精准箱: 必须物品类型完全一致
+                    if (target.filterItem == stack.item) {
+                        canInsert = true
+                    }
+                }
+                3 -> {
+                    // 空框箱: 无条件允许 (自动贴标)
+                    canInsert = true
+                }
+                4 -> {
+                    // 杂物箱: 无条件允许
+                    canInsert = true
                 }
             }
+            // 如果不匹配，直接看下一个箱子
+            if (!canInsert) continue
 
-            // 优先级2空框 和 3杂物 无条件尝试存入
             val targetStorage = ItemStorage.SIDED.find(world, target.pos, Direction.UP) ?: continue
 
             var success = false
@@ -105,11 +122,16 @@ class SortingBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(TYPE, p
 
             if (success) {
                 // 如果是空展示框 需要自动给展示框贴上这个物品
-                if (target.priority == 2) {
-                    val isFramed = updateEmptyFrame(world, target.pos, itemVariant.toStack(), targetStorage)
-                    if (isFramed) {
-                        target.priority = 1
-                        target.filterItem = itemVariant.item
+                if (target.priority == 3) {
+                    if (updateEmptyFrame(world, target.pos, itemVariant.toStack(), targetStorage)) {
+                        val newItem = itemVariant.item
+                        // 检查新贴上去的物品是不是“代表物品”
+                        if (ItemCategoryRegistry.Category.fromItem(newItem) != null) {
+                            target.priority = 1 // 升级为分类箱
+                        } else {
+                            target.priority = 2 // 升级为精准箱
+                        }
+                        target.filterItem = newItem
                         cachedInventories.sort()
                     }
                 }
@@ -136,17 +158,24 @@ class SortingBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(TYPE, p
             if (frame != null) {
                 val frameStack = frame.heldItemStack
                 if (!frameStack.isEmpty) {
-                    // 情况1: 展示框里有东西 -> 优先级 1
-                    cachedInventories.add(ChestTarget(immutablePos, 1, frameStack.item))
+                    val item = frameStack.item
+                    // 判断这个物品是 “分类代表” 还是 “普通物品”
+                    if (ItemCategoryRegistry.Category.fromItem(item) != null) {
+                        // 情况1 代表物品 -> 优先级 1 (分类箱)
+                        cachedInventories.add(ChestTarget(immutablePos, 1, item))
+                    } else {
+                        // 情况2 普通物品 -> 优先级 2 (精准箱)
+                        cachedInventories.add(ChestTarget(immutablePos, 2, item))
+                    }
                 } else {
-                    // 情况2: 展示框是空的 -> 优先级 2
-                    cachedInventories.add(ChestTarget(immutablePos, 2, null))
+                    // 情况3 展示框是空的 -> 优先级 3
+                    cachedInventories.add(ChestTarget(immutablePos, 3, null))
                 }
                 // 如果找到了展示框，就不需要再找告示牌了（展示框优先）
                 return@forEach
             }
 
-            // 情况3. 检测杂物箱告示牌 (优先级 3)
+            // 情况4  检测杂物箱告示牌 (优先级 4)
             if (checkSignForSundries(world, immutablePos)) {
                 cachedInventories.add(ChestTarget(immutablePos, 3, null))
             }
