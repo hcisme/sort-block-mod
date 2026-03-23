@@ -21,9 +21,9 @@ object ItemCategoryRegistry {
     private val C_NUGGETS = createTag("c", "nuggets")
     private val C_GLASS = createTag("c", "glass_blocks")
     private val C_GLASS_PANES = createTag("c", "glass_panes")
-    private val C_CHESTS = createTag("c", "chests") // 矛类武器
+    private val C_CHESTS = createTag("c", "chests")
     private val C_ARMORS = createTag("c", "armors")  // 所有盔甲
-    private val C_SPEARS = createTag("c", "spears")  // 矛类武器（新增）
+    private val C_SPEARS = createTag("c", "spears")  // 矛类武器
 
     // 农业硬编码
     private val FARMING_HARD_CODE = setOf(
@@ -357,7 +357,6 @@ object ItemCategoryRegistry {
         Items.CARROT_ON_A_STICK,
         Items.WARPED_FUNGUS_ON_A_STICK,
         Items.ELYTRA,
-        Items.LEATHER,
         Items.SADDLE, // 鞍
         Items.LEATHER_HORSE_ARMOR, // 皮革马铠
         Items.IRON_HORSE_ARMOR, // 铁马铠
@@ -468,7 +467,6 @@ object ItemCategoryRegistry {
         Items.FLETCHING_TABLE, // 制箭台
         Items.SMITHING_TABLE, // 锻造台
         Items.GRINDSTONE, // 砂轮
-        Items.BEEHIVE, // 蜂箱
         Items.BOOKSHELF, // 书架
         // 所有潜影盒
         Items.SHULKER_BOX,
@@ -593,6 +591,7 @@ object ItemCategoryRegistry {
             // 铁胸甲
             representative = Items.IRON_CHESTPLATE,
             tags = listOf(
+                C_ARMORS,
                 ItemTags.TRIMMABLE_ARMOR,
                 ItemTags.HEAD_ARMOR,
                 ItemTags.CHEST_ARMOR,
@@ -642,18 +641,9 @@ object ItemCategoryRegistry {
                 ItemTags.RAILS,
                 ItemTags.BOATS,
                 ItemTags.CHEST_BOATS,
-                createTag("c", "minecarts"),
-                C_ARMORS
+                createTag("c", "minecarts")
             ),
-            hardcodedItems = TRANSPORT_HARD_CODE,
-            excludedItems = setOf(
-                Items.LEATHER_BOOTS,
-                Items.IRON_BOOTS,
-                Items.CHAINMAIL_BOOTS,
-                Items.GOLDEN_BOOTS,
-                Items.DIAMOND_BOOTS,
-                Items.NETHERITE_BOOTS
-            )
+            hardcodedItems = TRANSPORT_HARD_CODE
         ),
 
         // 8. 红石
@@ -680,7 +670,6 @@ object ItemCategoryRegistry {
                 createTag("c", "slimeballs"),
                 createTag("c", "strings"),
                 createTag("c", "spider_eyes"),
-                createTag("c", "gunpowder"),
                 createTag("c", "ender_pearls"),
                 createTag("c", "blaze_rods"),
                 createTag("c", "ghast_tears"),
